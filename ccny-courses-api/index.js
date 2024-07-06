@@ -1,5 +1,7 @@
 const express = require('express');
 const Courses = require('./models/courseModel.js');
+const cors = require('cors');
+app.use(cors());
 //const allCourses = require('./Fall24Courses.json');
 
 const mongoose = require('mongoose');
