@@ -1,12 +1,12 @@
 const express = require('express');
 const Courses = require('./models/courseModel.js');
-const allCourses = require('./Fall24Courses.json');
+//const allCourses = require('./Fall24Courses.json');
 
 const mongoose = require('mongoose');
 const uri = 'mongodb+srv://root:ishmam123@express-api.e4axtdy.mongodb.net/Course-API?retryWrites=true&w=majority'
 mongoose.connect(uri);
-jsonToDatabase();
-console.log(Object.keys(allCourses));
+//jsonToDatabase();
+//console.log(Object.keys(allCourses));
 
 const app = express();
 
@@ -58,8 +58,13 @@ app.get('/', (req, res) => {
     res.send(htmlCode);
 });
 
-app.get('/courses', (req, res) => {
-    res.json(Object.keys(allCourses));
+app.get('/courses', async(req, res) => {
+    const dbCourses = await Courses.find({});
+    const courses = {};
+    dbCourses.forEach(course => {
+        courses[course.Course['courseCode']] = course.Course['name'];
+    });
+    res.json(courses);
 });
 
 app.get('/courses/:courseID', async (req, res) => {
