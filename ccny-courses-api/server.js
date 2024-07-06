@@ -12,6 +12,52 @@ const app = express();
 
 app.use(express.json());
 
+app.get('/', (req, res) => {
+    htmlCode = `<h1>CCNY Course API to retrieve course details for Fall 2024</h1> 
+    <br>
+    <h2>For JSON body of adding a course, it follows the structure</h2>
+    <p>{
+        'name': string value,
+        'status': string value,
+        'courseCode': string value,
+        'credits': number value,
+        'enrollmentPeriod': string value,
+        'dayTime': string value,
+        'room': string value,
+        'instructor': string value,
+        'description': string value
+    </p>
+    <h2>For the JSON body of updating a course, it follows the structure</h2>
+    <p>{
+        'searchName': string value,
+        'name': string value,
+        'status': string value,
+        'courseCode': string value,
+        'credits': number value,
+        'enrollmentPeriod': string value,
+        'dayTime': string value,
+        'room': string value,
+        'instructor': string value,
+        'description': string value
+    </p>
+    <h2>For JSON body of getting related courses and deleting a course use the following:</h2>
+    <p>{
+        'name': string value
+    }
+    </p>
+    <br>
+    <h2>Endpoints:</h2>
+    <ul>
+        <li>GET /courses - Get all course codes</li>
+        <li>GET /courses/:courseID - Get course details for a specific course based on Course Code</li>
+        <li>POST /courses/course-details - Get related courses based on course name</li>
+        <li>POST /courses/add-course - Add a new course</li>
+        <li>POST /courses/update-course - Update an existing course</li>
+        <li>DELETE /courses/delete-course - Delete an existing course</li>
+    </ul>`;
+    res.send(htmlCode);
+});
+
 app.get('/courses', (req, res) => {
     res.json(Object.keys(allCourses));
 });
