@@ -12,7 +12,14 @@ mongoose.connect(uri);
 const app = express();
 
 app.use(express.json());
-app.use(cors());
+app.use(
+    cors({
+      methods: 'GET,POST,PUT,DELETE',
+      credentials: true,
+      exposedHeaders: ['set-cookie'],
+    })
+  );
+  
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
