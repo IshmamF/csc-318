@@ -1,7 +1,6 @@
 const express = require('express');
 const Courses = require('./models/courseModel.js');
 const cors = require('cors');
-app.use(cors());
 //const allCourses = require('./Fall24Courses.json');
 
 const mongoose = require('mongoose');
@@ -13,6 +12,7 @@ mongoose.connect(uri);
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
 app.get('/', (req, res) => {
     htmlCode = `<h1>CCNY Course API to retrieve course details for Fall 2024</h1> 
