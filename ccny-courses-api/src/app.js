@@ -26,6 +26,7 @@ app.get('/', (req, res) => {
     htmlCode = `<h1>CCNY Course API to retrieve course details for Fall 2024</h1> 
     <br>
     <h2>For JSON body of adding a course, it follows the structure</h2>
+    <h3>PLEASE NOTE YOU DO NOT NEED ALL FIELDS TO TEST OUT API</h3>
     <p>{
         'name': string value,
         'status': string value,
@@ -38,6 +39,7 @@ app.get('/', (req, res) => {
         'description': string value
     </p>
     <h2>For the JSON body of updating a course, it follows the structure</h2>
+    <h3>YOU NEED 'searchName', everything else is optional</h3>
     <p>{
         'searchName': string value,
         'name': string value,
