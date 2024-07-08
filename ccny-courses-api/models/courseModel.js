@@ -38,7 +38,7 @@ const detailSchema = mongoose.Schema(
             type: String,
             required: true
         },
-        ratings: [ratingDetails]
+        ratings: ratingDetails
     }
 );
 

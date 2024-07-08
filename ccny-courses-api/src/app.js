@@ -4,9 +4,9 @@ const cors = require('cors');
 //const allCourses = require('./Fall24Courses.json');
 
 const mongoose = require('mongoose');
-const uri = 'mongodb+srv://root:ishmam123@express-api.e4axtdy.mongodb.net/Course-API?retryWrites=true&w=majority'
+const uri = process.env.uri
 mongoose.connect(uri);
-//jsonToDatabase();
+jsonToDatabase();
 //console.log(Object.keys(allCourses));
 
 const app = express();
@@ -247,7 +247,11 @@ async function jsonToDatabase () {
                 'dayTime': allCourses['Day Time'][key],
                 'room': allCourses['Room'][key],
                 'instructor': allCourses['Instructor'][key],
-                'description': allCourses['Description'][key]
+                'description': allCourses['Description'][key],
+                'ratings': {
+                    'ratingTotal': 0,
+                    'ratingCount': 0
+                }
             };
             const newCourse = new Courses({
                 'Course': course
