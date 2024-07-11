@@ -37,23 +37,9 @@ const detailSchema = mongoose.Schema(
         description: {
             type: String,
             required: true
-        },
-        ratings: ratingDetails
-    }
-);
-
-const ratingDetails = mongoose.Schema(
-    {
-        ratingTotal: {
-            type: Number,
-            required: true
-        },
-        ratingCount: {
-            type: Number,
-            required: true
         }
     }
-)
+);
     
 const courseSchema = mongoose.Schema(
     {
