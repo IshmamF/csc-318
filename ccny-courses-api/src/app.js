@@ -1,10 +1,11 @@
 const express = require('express');
 const Courses = require('../models/courseModel.js');
 const cors = require('cors');
-const allCourses = require('./Fall24Courses.json');
+const allCourses = require('../Fall24Courses.json');
 
 const mongoose = require('mongoose');
 const uri = process.env.uri
+console.log(uri)
 mongoose.connect(uri);
 jsonToDatabase();
 //console.log(Object.keys(allCourses));
